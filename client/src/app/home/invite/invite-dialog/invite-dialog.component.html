@@ -1,0 +1,5 @@
+<form [formGroup]="inviteForm" (ngSubmit)="onInviteUser()">
+    <label id="inviteUser">Username or Email</label>
+    <input type="text" id="inviteUser" formControlName="inviteUser">
+    <button type="submit">Invite</button>
+</form>

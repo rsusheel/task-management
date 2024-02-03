@@ -1,0 +1,62 @@
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.top-bar{
+    display: flex;
+    width: 95%;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    font-size: 14px;
+}
+
+.home-link{
+    margin-right: 20px;
+}
+
+.default-workspace-btn{
+    width: 160px;
+}
+
+.top-bar-right{
+    display: flex;
+    align-items: center;
+}
+
+.switch-block{
+    margin-left: 20px;
+}
+
+.switch-label{
+    display: block;
+    font-size: 11px;
+}
+
+.workspace-list{
+    outline: none;
+}
+
+.logout-btn{
+    width: 50px;
+    height: 20px;
+    outline: none;
+    margin-left: 20px;
+}
+
+.menu-btn {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-left: 20px;
+    transition: 0.1s;
+    cursor: pointer;
+}
+
+.menu-btn:hover {
+    color: #dedede;
+}

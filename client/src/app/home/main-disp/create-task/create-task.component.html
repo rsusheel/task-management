@@ -1,0 +1,74 @@
+<div>
+    <form [formGroup]="createTaskForm" (ngSubmit)="onCreateTask()">
+        <div>
+            <label for="taskNumber">Task Number</label>
+            <input type="text" id="taskNumber" formControlName="taskNumber">
+        </div>
+        <div>
+            <label for="taskName">Task Name</label>
+            <input type="text" id="taskName" formControlName="taskName">
+        </div>
+        <div>
+            <label for="taskState">Task State</label>
+            <select id="taskState" formControlName="taskState" *ngIf="globalStateValue">
+                <option *ngFor="let state of globalStateValue.task_states" [value]="state">
+                  {{ state }}
+                </option>
+            </select>
+        </div>
+        <div>
+            <label for="taskDescription">Task Description</label>
+            <input type="text" id="taskDescription" formControlName="taskDescription">
+        </div>
+        
+        <div>
+            <label for="taskImportance">Task Importance</label>
+            <select id="taskImportance" formControlName="taskImportance" *ngIf="globalStateValue">
+                <option *ngFor="let state of globalStateValue.importance_divisions" [value]="state">
+                  {{ state }}
+                </option>
+            </select>
+        </div>
+        <div>
+            <label for="referenceTask">Reference Task</label>
+            <select id="referenceTask" formControlName="referenceTask" *ngIf="taskList">
+                <option [value]="null">None</option>
+                <option *ngFor="let item of taskList" [value]="item.task_number">
+                    {{ item.task_number }}
+                </option>
+            </select>
+        </div>
+
+        <app-datetime
+            (valueOnChange)="onChangeDatetime($event)"
+            [disabled]="false"
+        ></app-datetime>
+        
+        <div>
+            <label for="workspaceName">Workspace Name</label>
+            <select id="workspaceName" formControlName="workspaceName" *ngIf="globalStateValueForm.userInfo">
+                <option *ngFor="let item of globalStateValueForm.userInfo" [value]="item.workspace_id">
+                    {{ item.workspace_name }}
+                </option>
+            </select>
+        </div>
+        <div>
+            <label for="groupName">Group Name</label>
+            <select id="groupName" formControlName="groupName" *ngIf="groupList">
+                <option *ngFor="let item of groupList.groups" [value]="item.group_id">
+                    {{ item.group_name }}
+                </option>
+            </select>
+        </div>
+        <div>
+            <label for="assignTo">Assign To</label>
+            <select id="assignTo" formControlName="assignTo" *ngIf="teamList">
+                <option *ngFor="let item of teamList" [value]="item.user_id">
+                    {{ item.username }}
+                </option>
+            </select>
+        </div>
+        <button type="submit">Create</button>
+          
+    </form>
+</div>

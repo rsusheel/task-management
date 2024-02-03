@@ -1,0 +1,24 @@
+<div class="main-container">
+
+    <div class="menu-item">
+        <div></div><div>Manage Profile</div>
+    </div>
+    <div (click)="openManageWorkspace()" class="menu-item">
+        <div></div><div>Workspaces</div>
+    </div>
+    <div (click)="openMembersList()" class="menu-item">
+        <div></div><div>Members</div>
+    </div>
+    <div (click)="openManageInvites()" class="menu-item">
+        <div></div><div>Manage Invites</div>
+    </div>
+    <div (click)="openInviteUser()" class="menu-item">
+        <mat-icon class="menu-item-icon">person_add</mat-icon><div>Add Member</div>
+    </div>
+    <div class="menu-item">
+        <mat-icon class="menu-item-icon">settings</mat-icon><div>Other Settings</div>
+    </div>
+    <div (click)="onLogOut()" class="menu-item logout-btn">
+        <mat-icon class="menu-item-icon logout-btn-icon">power_settings_new</mat-icon><div>Logout</div>
+    </div>
+</div>

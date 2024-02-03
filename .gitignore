@@ -1,0 +1,16 @@
+client/.git
+client/node_modules
+client/.vscode
+client/.gitignore
+client/.angular
+client/.env
+client/.editorconfig
+server/.git
+server/node_modules
+server/.vscode
+server/.gitignore
+server/.env
+server/.eslintrc
+server/.prettierrc
+database/.git
+

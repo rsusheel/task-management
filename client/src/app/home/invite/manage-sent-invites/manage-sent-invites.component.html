@@ -1,0 +1,39 @@
+<div class="manage-sent-invite-dialog">
+    <div class="manage-sent-invite-top">
+        <div class="manage-sent-invite-top-left">
+            <mat-icon>list_alt</mat-icon>
+            <div class="manage-sent-invite-title">Sent Invites <span class="manage-sent-invite-title-sub">&nbsp; • &nbsp; {{inviteDetails.sentInvites.length}}</span></div>
+        </div>
+        <mat-icon class="manage-sent-invite-close" (click)="onCloseDialog()">arrow_back</mat-icon>
+    </div>
+    <div class="manage-sent-invite-table-title">
+        <div class="manage-sent-invite-table-from">To</div>
+        <div>Workspace</div>
+        <div class="manage-sent-invite-table-action">Action</div>
+    </div>
+    <div class="manage-sent-invite-list-container">
+        <ng-container *ngFor="let invite of inviteDetails.sentInvites">
+            <div class="manage-sent-invite-list" *ngIf="invite.accept_status != true && invite.reject_status != true">
+                <div class="manage-sent-invite-list-from">
+                    <img class="manage-sent-invite-list-user-icon" src="https://www.pngarts.com/files/10/Default-Profile-Picture-PNG-Image-Background.png"/>
+                    <div class="manage-sent-invite-list-user-detail">
+                        {{invite.requester_details.name}} 
+                        <span class="manage-sent-invite-list-from-email">
+                             • {{invite.requester_details.username}}
+                        </span><br/>
+                        <span class="manage-sent-invite-list-from-email">
+                            {{invite.requester_details.email_id}}
+                        </span>
+                    </div>
+                </div>
+                <div>
+                    {{invite.workspace_details.workspace_name}}<br/>
+                    <span class="manage-sent-invite-list-from-email">{{'Creator: '+invite.workspace_details.creator_name}}</span>
+                </div>
+                <div class="manage-sent-invite-list-action">
+                    <mat-icon class="manage-sent-invite-btn manage-sent-invite-reject-btn">close</mat-icon>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>

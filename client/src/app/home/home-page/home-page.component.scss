@@ -1,0 +1,42 @@
+@import '../../style/theme';
+@import '../../style/structure';
+
+.top-bar{
+    height: $top-bar-height;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: $secondary-color;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    position: fixed;
+    top: 0;
+}
+
+.task-bar{
+    box-sizing: border-box;
+    height: calc(100vh - $top-bar-height);
+    width: $task-bar-width;
+    background-color: $primary-color;
+    position: fixed;
+    top: $top-bar-height;
+    border-right: 1px solid black;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-bottom: 20px;
+}
+
+.home-page{
+    margin: auto;
+    margin-top: $top-bar-height;
+    // left: $task-bar-width;
+    height: calc(100vh - $top-bar-height);
+    // width: calc(100vw - $task-bar-width);
+    max-width: 1100px;
+    // position: absolute;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    z-index: 0;
+}

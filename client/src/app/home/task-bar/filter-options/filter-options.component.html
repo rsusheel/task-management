@@ -1,0 +1,128 @@
+<div class="filter-form-dialog">
+    <form [formGroup]="filterForm" (ngSubmit)="onSaveFilter()">
+
+        <div class="manage-filter-top">
+            <div class="manage-filter-top-left">
+                <mat-icon>filter_list</mat-icon>
+                <div class="manage-filter-title">Filter Options</div>
+            </div>
+            <mat-icon class="manage-filter-close" (click)="onCloseDialog()">close</mat-icon>
+        </div>
+        
+        <div class="filter-task-states filter-options">
+            <div>Task States</div>
+            <div class="select-task-states">
+                <ng-container *ngFor="let state of globalStateValue.data.task_states">
+                    <ng-container *ngIf="state!='New'">
+                        <label class="task-state-item">
+                            <input type="checkbox" [checked]="inArray(state, 'task_states')" [value]="state">{{state}}
+                        </label>
+                    </ng-container>
+                </ng-container>
+            </div>
+        </div>
+
+        <!-- <div class="filter-options">
+            <label for="targetDatetime">Target Date</label>
+            <div class="input-datetime-container">
+                <input readonly class="input-date" [matDatepicker]="targetDatetime" formControlName="targetDatetime_date" placeholder="Date" (click)="targetDatetime.open()" type="text">
+                <mat-datepicker #targetDatetime></mat-datepicker>
+                <div class="input-time-container">
+                    <input type="text" class="input-time" placeholder="00" formControlName="targetDatetime_hours">
+                    <span class="separator">:</span>
+                    <input type="text" class="input-time" placeholder="00" formControlName="targetDatetime_minutes">
+                </div>
+            </div>
+        </div>
+
+        <div class="filter-options">
+            <label for="creationDatetime">Creation Datetime</label>
+            <div class="input-datetime-container">
+                <input readonly class="input-date" [matDatepicker]="creationDatetime" formControlName="creationDatetime_date" placeholder="Date" (click)="creationDatetime.open()" type="text">
+                <mat-datepicker #creationDatetime></mat-datepicker>
+                <div class="input-time-container">
+                    <input type="text" class="input-time" placeholder="00" formControlName="creationDatetime_hours">
+                    <span class="separator">:</span>
+                    <input type="text" class="input-time" placeholder="00" formControlName="creationDatetime_minutes">
+                </div>
+            </div>
+        </div> -->
+
+        <div>
+            <div>Target Datetime</div>
+            <app-datetime
+                (valueOnChange)="onChangeCreationTime($event)"
+            ></app-datetime>
+            <div>
+                Operator
+                <select>
+                    <option>Equal to (=)</option>
+                    <option>Not equal to (!=)</option>
+                    <option>Greater than (>)</option>
+                    <option>Greater than equal to (>=)</option>
+                    <option>Less than (<)</option>
+                    <option>Less than equal to (<=)</option>
+                </select>
+            </div>
+        </div>
+
+        <div>
+            <div>Creation Datetime</div>
+            <app-datetime
+                (valueOnChange)="onChangeTargetTime($event)"
+            ></app-datetime>
+            <div>
+                Operator
+                <select>
+                    <option>Equal to (=)</option>
+                    <option>Not equal to (!=)</option>
+                    <option>Greater than (>)</option>
+                    <option>Greater than equal to (>=)</option>
+                    <option>Less than (<)</option>
+                    <option>Less than equal to (<=)</option>
+                </select>
+            </div>
+        </div>
+
+        <div>
+            <label for="importance">Importance</label>
+            <input type="checkbox" [checked]="inArray('Low', 'importance')" [value]="'Low'">Low
+            <input type="checkbox" [checked]="inArray('Medium', 'importance')" [value]="'Medium'">Medium
+            <input type="checkbox" [checked]="inArray('High', 'importance')" [value]="'High'">High
+        </div>
+        
+        <div class="filter-option">
+            <label for="hasSubTask">Has Sub-Task</label>
+            <!-- <select id="hasSubTask" formControlName="hasSubTask">
+                <option [value]="false">False</option>
+                <option [value]="true">True</option>
+            </select> -->
+            <input type="checkbox" [checked]="inArray('true', 'has_sub_task')" [value]="'true'">True
+            <input type="checkbox" [checked]="inArray('false', 'has_sub_task')" [value]="'false'">False
+        </div>
+
+        <div>
+            <div>
+                <label for="orderField">Sort by Field</label>
+                <select>
+                    <option>Task Number</option>
+                    <option>Task State</option>
+                    <option>Task Name</option>
+                    <option>Group Name</option>
+                    <option>Task Importance</option>
+                    <option>Target Datetime</option>
+                    <option>Completion Datetime</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="orderSequence">Sort Order</label>
+                <div>
+                    <div>ASC</div>
+                    <div>DESC</div>
+                </div>
+            </div>
+        </div>
+          
+    </form>
+</div>

@@ -1,0 +1,65 @@
+<div>
+    <mat-accordion>
+        <mat-expansion-panel disabled="true" class="mat-elevation-z0">
+            <mat-expansion-panel-header>
+                <div class="list-item-header-container">
+                    <div class="list-item-header list-item-task-number">Task</div>
+                    <div class="list-item-header list-item-task-name">Name</div>
+                    <div class="list-item-header list-item-task-status">Status</div>
+                    <div class="list-item-header list-item-assigned-to">Owner</div>
+                    <div class="list-item-header list-item-group-name">Group</div>
+                    <mat-icon (click)="openFilterDialog()" class="list-item-filter-icon" matTooltip="Filter">filter_list</mat-icon>
+                </div>
+            </mat-expansion-panel-header>
+        </mat-expansion-panel>
+    </mat-accordion>
+    
+    <mat-accordion>
+        <mat-expansion-panel
+            *ngFor="let task of taskList"
+            class="mat-elevation-z0"
+            disabled="true"
+            #panel
+        >
+            <mat-expansion-panel-header collapsedHeight="25px" expandedHeight="25px" class="expansion-panel-list-item">
+                <div class="list-item">
+                    <div class="list-item-column list-item-task-number" (click)="onTaskSelect(task.workspace_id, task.task_number)">{{task.task_number}}</div>
+                    <div class="list-item-column list-item-task-name" (click)="panel.toggle()">{{task.task_name}}</div>
+                    <div class="list-item-column list-item-task-state">
+                        <select class="test" [(ngModel)]="task.task_state">
+                            <option *ngFor="let state of stateValues(task.task_state)" [value]="task.task_state" (click)="setState(state)">{{state}}</option>
+                        </select>
+                        <ng-container *ngIf="selectedState != task.task_state">
+                            <mat-icon>keyboard_arrow_down</mat-icon>
+                        </ng-container>
+                        <!-- <mat-icon>keyboard_arrow_down</mat-icon> -->
+                    </div>
+                    <div class="list-item-column list-item-assigned-to">{{task.assigned_to.username}}</div>
+                    <div class="list-item-column list-item-group-name">{{task.group_name}}</div>
+                    <mat-icon *ngIf="!panel.expanded" class="toggle-panel" (click)="panel.toggle()">keyboard_arrow_down</mat-icon>
+                    <mat-icon *ngIf="panel.expanded" class="toggle-panel" (click)="panel.toggle()">keyboard_arrow_up</mat-icon>
+                </div>
+            </mat-expansion-panel-header>
+            <div class="list-item-details">
+                <div class="list-item-details-top">
+                    <div class="list-item-name list-item-det">
+                        <div class="list-item-name-title list-item-details-title">{{task.task_number}}</div>
+                        <div class="list-item-name-details list-item-details-other">{{task.task_name}}</div>
+                    </div>
+                    <mat-icon>info</mat-icon>
+                </div>
+                <div class="list-item-description list-item-det">
+                    <div class="list-item-description-title list-item-details-title">Description</div>
+                    <div class="list-item-description-details list-item-details-other">{{task.task_description}}</div>
+                </div>
+                <div class="list-item-comment list-item-det" *ngIf="task.last_comment">
+                    <div class="list-item-comment-title list-item-details-title">
+                        <div class="list-item-comment-title-top">Last Comment</div>
+                        <mat-icon class="add-comment-icon" matTooltip="Add Comment">add_circle_outline</mat-icon>
+                    </div>
+                    <div class="list-item-comment-details list-item-details-other">{{task.last_comment}}</div>
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

@@ -1,0 +1,93 @@
+<div>
+    <form [formGroup]="createTaskForm" (ngSubmit)="onCreateSubTask()">
+        <button type="button" (click)="onBackBtnClick()">Back</button>
+        <button type="submit">Create</button>
+        <div>
+            <label for="taskNumber">Parent Task Number</label>
+            <input type="text" id="taskNumber" formControlName="taskNumber">
+        </div>
+        <div>
+            <label for="subTaskNumber">Sub Task Number</label>
+            <input type="text" id="subTaskNumber" formControlName="subTaskNumber">
+        </div>
+        <div>
+            <label for="subTaskName">Sub Task Name</label>
+            <input type="text" id="subTaskName" formControlName="subTaskName">
+        </div>
+        <div>
+            <label for="subTaskState">Sub Task State</label>
+            <select id="subTaskState" formControlName="subTaskState" *ngIf="globalStateValue">
+                <option *ngFor="let state of globalStateValue.task_states" [value]="state">
+                  {{ state }}
+                </option>
+            </select>
+        </div>
+        <div>
+            <label for="subTaskDescription">Sub Task Description</label>
+            <input type="text" id="subTaskDescription" formControlName="subTaskDescription">
+        </div>
+        
+        <div>
+            <label for="assignedTo" class="form-field-label">Assigned To</label>
+            <select id="assignedTo" formControlName="assignedTo">
+                <option *ngFor="let item of teamList" [value]="item.user_id">
+                    {{ item.username }}
+                </option>
+            </select>
+        </div>
+        
+        <div>
+            <label for="subTaskImportance">Sub Task Importance</label>
+            <select id="subTaskImportance" formControlName="subTaskImportance" *ngIf="globalStateValue">
+                <option *ngFor="let state of globalStateValue.importance_divisions" [value]="state">
+                  {{ state }}
+                </option>
+            </select>
+        </div>
+        <div>
+            <label for="referenceTask">Reference Task</label>
+            <select id="referenceTask" formControlName="referenceTask" *ngIf="taskList">
+                <option [value]="null">None</option>
+                <option *ngFor="let item of taskList" [value]="item.sub_task_number">
+                    {{ item.sub_task_number }}
+                </option>
+            </select>
+        </div>
+        <div>
+            <label for="targetDatetime">Target Date</label>
+            <div class="input-datetime-container">
+                <input readonly class="input-date" [matDatepicker]="targetDatetime" formControlName="targetDatetime_date" placeholder="Date" (click)="targetDatetime.open()" type="text">
+                <mat-datepicker #targetDatetime></mat-datepicker>
+                <div class="input-time-container">
+                    <input type="text" class="input-time" placeholder="00" formControlName="targetDatetime_hours" maxlength="2" [(ngModel)]="inputValueHour" (input)="checkHours()">
+                    <span class="separator">:</span>
+                    <input type="text" class="input-time" placeholder="00" formControlName="targetDatetime_minutes" maxlength="2" [(ngModel)]="inputValueMinutes" (input)="checkMinutes()">
+                </div>
+                <div class="input-time-meridian">
+                    <div class="input-time-meridian-empty" (click)="changeMeridian('targetMeridian')">
+                        <mat-icon class="input-time-meridian-hover">swap_horiz</mat-icon>
+                    </div>
+                    <div class="input-time-meridian-content">{{meridian.targetMeridian}}</div>
+                </div>
+            </div>
+        </div>
+        
+        <div>
+            <label for="workspaceName">Workspace Name</label>
+            <select id="workspaceName" formControlName="workspaceName" *ngIf="globalStateValueForm.userInfo">
+                <option *ngFor="let item of globalStateValueForm.userInfo" [value]="item.workspace_id">
+                    {{ item.workspace_name }}
+                </option>
+            </select>
+        </div>
+        <div>
+            <label for="groupName">Group Name</label>
+            <select id="groupName" formControlName="groupName" *ngIf="groupList">
+                <option *ngFor="let item of groupList.groups" [value]="item.group_id">
+                    {{ item.group_name }}
+                </option>
+            </select>
+        </div>
+          
+    </form>
+</div>

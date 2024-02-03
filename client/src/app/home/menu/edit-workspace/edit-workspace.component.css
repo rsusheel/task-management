@@ -1,0 +1,45 @@
+.edit-workspace-dialog {
+    height: 500px;
+    width: 700px;
+    font-size: 15px;
+    font-weight: 100;
+}
+
+.edit-workspace-top {
+    padding: 0px 10px 10px 10px;
+    margin: 15px 20px 20px 20px;
+    border-bottom: 1px solid rgb(171, 171, 171);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: default;
+}
+
+.edit-workspace-top-left {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.edit-workspace-title-sub {
+    color: rgb(145, 145, 145);
+}
+
+.edit-workspace-close {
+    cursor: pointer;
+    color: #989898;
+    display: flex;
+    font-size: 22px;
+    height: 35px;
+    width: 35px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.edit-workspace-close:hover {
+    background-color: rgb(230, 230, 230);
+    color: black;
+}

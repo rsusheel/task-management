@@ -1,0 +1,21 @@
+<div>
+    <form [formGroup]="createGroupForm" (ngSubmit)="onCreateGroup()">
+        <div>
+            <label for="groupName">Group Name</label>
+            <input type="text" id="groupName" formControlName="groupName">
+        </div>
+        <div>
+            <label for="groupDescription">Group Description</label>
+            <input type="text" id="groupDescription" formControlName="groupDescription">
+        </div>
+        <div>
+            <label for="workspace">Workspace</label>
+            <select id="workspace" formControlName="workspace" *ngIf="globalStateValue.userInfo">
+                <option *ngFor="let item of globalStateValue.userInfo" [value]="item.workspace_id">
+                    {{ item.workspace_name }}
+                </option>
+            </select>
+        </div>
+        <button type="submit">Create Group</button>
+    </form>
+</div>

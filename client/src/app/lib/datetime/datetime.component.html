@@ -1,0 +1,23 @@
+<form [formGroup]="taskForm">
+    <div class="input-datetime-container">
+        <input readonly class="input-date" [matDatepicker]="datetimePicker" formControlName="datetime_date" placeholder="Date" (click)="datetimePicker.open()" type="text" (dateChange)="onChangeValue()">
+        <mat-datepicker #datetimePicker></mat-datepicker>
+        
+        <div class="input-time-container">
+            <input type="text" class="input-time" placeholder="00" formControlName="datetime_hours" maxlength="2" (input)="checkHours()" (input)="onChangeValue()">
+            <span class="separator">:</span>
+            <input type="text" class="input-time" placeholder="00" formControlName="datetime_minutes" maxlength="2" (input)="checkMinutes()" (input)="onChangeValue()">
+        </div>
+
+        <div *ngIf="!disabled" class="input-time-meridian">
+            <div class="input-time-meridian-empty" (click)="changeMeridian(); onChangeValue()">
+                <mat-icon class="input-time-meridian-hover">swap_horiz</mat-icon>
+            </div>
+            <div class="input-time-meridian-content">{{meridian}}</div>
+        </div>
+
+        <div *ngIf="disabled" class="input-time-meridian-fix">
+            {{meridian}}
+        </div>
+    </div>
+</form>

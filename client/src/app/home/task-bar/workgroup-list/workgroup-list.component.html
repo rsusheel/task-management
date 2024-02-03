@@ -1,0 +1,12 @@
+<select *ngIf="globalStateValue" (change)="onGroupChange($event)" [(ngModel)]="defaultValue">
+  <option [value]="'All'">
+    All
+  </option>
+  <option *ngFor="let item of globalStateValue.groups" [value]="item.group_id">
+    {{ item.group_name }}
+  </option>
+  <option [value]="'+'">
+    + Create Group
+  </option>
+</select>
+<mat-icon (click)="openDialog()">filter_list</mat-icon>

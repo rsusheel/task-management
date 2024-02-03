@@ -1,0 +1,95 @@
+@import '../../../../style/structure';
+@import '../../../../style/theme';
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-clear-button {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
+
+.task-form{
+  box-sizing: border-box;
+  margin-top: $task-form-top-bar-height;
+}
+
+.task-form-top{
+  position: fixed;
+  top: $top-bar-height;
+  left: 0;
+  height: $task-form-top-bar-height;
+  background-color: $tertiary-color;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.task-form-top-inner {
+  width: 100%;
+  max-width: $max-width;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 200px;
+}
+
+.task-form-btn {
+  outline: none;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  padding: 0 10px;
+  margin: auto;
+}
+
+.task-form-btn:hover {
+  cursor: pointer;
+}
+
+.task-form-seperator{
+  box-sizing: border-box;
+  width: calc(100vw - $task-bar-width - 60px);
+  margin: 20px 30px;
+  border-top: 1px solid rgb(188, 188, 188);
+}
+
+.form-field-line-break textarea{
+  max-width: 700px;
+  height: 80px;
+}
+
+.task-name textarea{
+  height: 32px;
+}
+
+.toggled-class{
+  border-left-width: $field-edit-border-width;
+  border-left-style: solid;
+  border-left-color: $field-edit-border-color;
+}
+
+.task-form-part-one{
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.task-form-part-one-right{
+  height: 100%;
+  border-left: 1px solid black;
+  align-items: center;
+  align-content: center;
+}
+
+.form-field-label {
+  font-size: 14px;
+}
+
+textarea {
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(246, 246, 246);
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+}

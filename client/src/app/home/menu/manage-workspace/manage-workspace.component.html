@@ -1,0 +1,45 @@
+<div class="manage-workspace-dialog">
+    <div class="manage-workspace-top">
+        <div class="manage-workspace-top-left">
+            <mat-icon>subject</mat-icon>
+            <div class="manage-workspace-title">Workspace Details <span class="manage-workspace-title-sub">&nbsp; • &nbsp; {{globalStateValue.length}}</span></div>
+        </div>
+        <mat-icon class="manage-workspace-close" (click)="onCloseDialog()">close</mat-icon>
+    </div>
+    <div class="workspace-list">
+        <div class="workspace-list-item" *ngFor="let item of globalStateValue">
+            <div class="workspace-item-name">
+                {{item.workspace_name}} •
+                <span class="workspace-item-sub-desc">
+                    {{item.workspace_creation_datetime.substring(0,10)}}
+                </span> <br/>
+                <span class="workspace-item-sub-desc" *ngIf="item.creator_id!=userId">
+                    {{'Creator: '+item.creator_name}}
+                </span>
+                <span class="workspace-item-sub-desc" *ngIf="item.creator_id==userId">
+                    Creator: You
+                </span>
+            </div>
+            <div class="workspace-item-default">
+                <span *ngIf="defaultWorkspace!=item.workspace_id" (click)="onSetWorkspaceDefault(item.workspace_id)">
+                    Set Default
+                </span>
+            </div>
+            <div class="workspace-item-admin">
+                <span *ngIf="checkAdmin(item)">
+                    Admin
+                </span>
+            </div>
+            <div class="workspace-item-details">
+                Members: <span class="workspace-item-sub-desc2">{{item.team_members.length}}</span> <br/>
+                Groups: <span class="workspace-item-sub-desc2">{{item.groups.length}}</span>
+            </div>
+            <div class="workspace-manage-btn">
+                <ng-container *ngIf="checkAdmin(item)">
+                    <span class="workspace-manage-btn-inner" (click)="onClickManage(item.workspace_id)">Manage</span>
+                </ng-container>
+                <!-- <span #viewWorkspace class="workspace-manage-btn-inner" (click)="onClickManage(item.workspace_id)">Manage</span> -->
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,94 @@
+.input-datetime-container{
+    display: flex;
+}
+
+.input-date{
+    width: 90px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.input-date:focus{
+    border-radius: 0;
+    outline: none;
+}
+
+.input-time-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    border-left: 0;
+    width: 70px;
+}
+
+.input-time {
+    border: none;
+    outline: none;
+    padding: 5px;
+    width: 50%;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+}
+
+.separator {
+    margin: 0;
+}
+
+.input-time-meridian {
+    width: 30px;
+    text-align: center;
+    font-size: 13px;
+    border: 1px solid black;
+    border-left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.2s ease;
+    padding: 0;
+
+    &:hover {
+        width: 60px;
+    }
+}
+
+.input-time-meridian-fix {
+    width: 30px;
+    text-align: center;
+    font-size: 13px;
+    border: 1px solid black;
+    border-left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.input-time-meridian-empty {
+    position: relative;
+    display: none;
+    height: 25px;
+}
+
+.input-time-meridian-hover {
+    /* color: rgba(0, 0, 0, 0); */
+    color: aqua;
+}
+
+.input-time-meridian-content {
+    width: 100%;
+    width: 30px;
+    text-align: center;
+}
+
+.input-time-meridian:hover .input-time-meridian-hover{
+    color: white;
+    transform: scale(0.8);
+}
+
+.input-time-meridian:hover .input-time-meridian-empty{
+    width: 30px;
+    background-color: black;
+    display: block;
+    cursor: pointer;
+}

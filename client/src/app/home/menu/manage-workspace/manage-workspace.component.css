@@ -1,0 +1,137 @@
+.manage-workspace-dialog {
+    height: 500px;
+    width: 700px;
+    font-size: 15px;
+    font-weight: 100;
+}
+
+.manage-workspace-top {
+    padding: 0px 10px 10px 10px;
+    margin: 15px 20px 20px 20px;
+    border-bottom: 1px solid rgb(171, 171, 171);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: default;
+}
+
+.manage-workspace-top-left {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.manage-workspace-title-sub {
+    color: rgb(145, 145, 145);
+}
+
+.manage-workspace-close {
+    cursor: pointer;
+    color: #989898;
+    display: flex;
+    font-size: 22px;
+    height: 35px;
+    width: 35px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.manage-workspace-close:hover {
+    background-color: rgb(230, 230, 230);
+    color: black;
+}
+
+.workspace-list {
+    /* margin: 20px 50px; */
+    padding: 0px 50px 10px 50px;
+    cursor: default;
+    overflow-y: scroll;
+    height: 400px;
+}
+
+.workspace-list-item {
+    height: 50px;
+    display: grid;
+    grid-template-columns: 2fr 80px 90px 90px 90px;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.workspace-list-item:hover {
+    background-color: rgb(231, 231, 231);
+}
+
+.workspace-item-name {
+    font-weight: 400;
+    padding-left: 15px;
+}
+
+.workspace-item-default {
+    text-align: center;
+}
+
+.workspace-item-default span{
+    font-size: 12px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.workspace-item-default span:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.workspace-item-admin {
+    font-size: 12px;
+    text-align: center;
+}
+
+.workspace-item-admin span {
+    font-size: 10px;
+    border:  1px solid rgb(128, 108, 0);
+    color: rgb(128, 108, 0);
+    border-radius: 5px;
+    padding: 4px 8px;
+}
+
+.workspace-item-sub-desc {
+    font-size: 12px;
+    color: rgb(88, 88, 88);
+    font-weight: 300;
+}
+
+.workspace-item-sub-desc2 {
+    font-size: 13px;
+    color: rgb(88, 88, 88);
+    font-weight: 300;
+}
+
+.workspace-item-details {
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.workspace-manage-btn {
+    font-size: 14px;
+    text-align: center;
+}
+
+.workspace-manage-btn-inner {
+    height: 30px;
+    width: 80px;
+    display: grid;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0);
+    color: rgb(94, 94, 94);
+    transition: 0.1s;
+}
+
+.workspace-manage-btn-inner:hover {
+    cursor: pointer;
+    border: 1px solid black;
+    color: black;
+}

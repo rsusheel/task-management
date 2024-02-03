@@ -1,0 +1,59 @@
+<div class="task-list-container">
+<mat-accordion *ngIf="taskList">
+    <mat-expansion-panel 
+      *ngFor="let task of taskList" 
+      [hideToggle]="true" 
+      disabled="true" 
+      class="mat-elevation-z0" 
+      #panel
+      matTooltip="{{task.task_name}}"
+      [matTooltipPosition]="'right'"
+    >
+        <mat-expansion-panel-header collapsedHeight="25px" expandedHeight="25px">
+          <mat-panel-title class="task-title">
+            <a (click)="onTaskSelect(task.workspace_id, task.task_number)">{{task.task_number}}</a>
+          </mat-panel-title>
+          <mat-panel-description class="task-state">
+            {{task.task_state}}
+          </mat-panel-description>
+          <mat-icon *ngIf="task.has_sub_task && !panel.expanded" class="toggle-panel" (click)="panel.toggle()">keyboard_arrow_down</mat-icon>
+          <mat-icon *ngIf="task.has_sub_task && panel.expanded" class="toggle-panel" (click)="panel.toggle()">keyboard_arrow_up</mat-icon>
+          <div [style.width.px]="30" [style.height.px]="30" *ngIf="!(task.has_sub_task)"></div>
+        </mat-expansion-panel-header>
+        <div class="sub-tasks-container">
+          <ng-container *ngIf="task?.sub_task_details && isArray(task.sub_task_details)">
+            <div class="sub-tasks" *ngFor="let subtask of task.sub_task_details">
+              <span>{{subtask.sub_task_number}}</span>
+              <span>{{subtask.sub_task_state}}</span>
+              <span class="sub-task-icon">
+                <mat-icon 
+                  *ngIf="
+                    subtask.sub_task_state=='New' || 
+                    subtask.sub_task_state=='Created' ||
+                    subtask.sub_task_state=='In Progress' ||
+                    subtask.sub_task_state=='Re-opened'">
+                  play_circle_outline
+                </mat-icon>
+                <mat-icon 
+                  *ngIf="
+                    subtask.sub_task_state=='On Hold'">
+                  pause_circle_outline
+                </mat-icon>
+                <mat-icon 
+                  *ngIf="
+                    subtask.sub_task_state=='Completed' ||
+                    subtask.sub_task_state=='Closed'">
+                  check_circle
+                </mat-icon>
+                <mat-icon 
+                  *ngIf="
+                    subtask.sub_task_state=='Canceled'">
+                  cancel
+                </mat-icon>
+              </span>
+            </div>
+          </ng-container>
+        </div>
+      </mat-expansion-panel>
+</mat-accordion>
+</div>

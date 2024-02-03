@@ -1,0 +1,7 @@
+<div class="snack-bar">
+    <div class="snack-bar-content">
+        <mat-icon>{{ data?.icon }}</mat-icon>
+        <span class="snack-bar-message" [innerHTML]="message"></span>
+    </div>
+    <mat-icon class="snack-bar-dismissal" (click)="dismiss()">close</mat-icon>
+</div>

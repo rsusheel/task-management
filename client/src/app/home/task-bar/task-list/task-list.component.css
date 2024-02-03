@@ -1,0 +1,57 @@
+.task-list-container {
+    margin-top: 20px;
+}
+
+.task-title {
+    width: 200px;
+}
+
+.task-state{
+    text-align: right;
+}
+
+mat-expansion-panel {
+    margin: 0;
+}
+
+mat-expansion-panel-header {
+    margin: 0px;
+    padding: 0 10px 0 10px;
+}
+
+.toggle-panel{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    font-size: 18px;
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+}
+
+.toggle-panel:hover {
+    background-color: rgb(233, 233, 233);
+}
+
+.sub-tasks-container {
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.sub-tasks{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sub-tasks span {
+    display: flex;
+    align-items: center;
+}
+
+.sub-task-icon mat-icon{
+    height: 20px;
+    width: 20px;
+    font-size: 20px;
+}

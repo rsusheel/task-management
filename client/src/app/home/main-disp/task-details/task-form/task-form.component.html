@@ -1,0 +1,154 @@
+<div class="task-form">
+    <form [formGroup]="taskForm" (ngSubmit)="onSaveTask()">
+        <div class="task-form-top">
+            <div class="task-form-top-inner">
+                <div></div>
+                <div>
+                    <button class="task-form-btn" type="button" (click)="createSubTaskRoute()">Add Sub Task</button>
+                    <button class="task-form-btn" type="submit">Save</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="task-form-part-one">
+            <div class="task-form-part-one-left">
+                <div class="form-field-line-break task-name" [class.toggled-class]="toggleClass.taskName">
+                    <label id="taskName" class="form-field-label">Task Name</label>
+                    <textarea placeholder="Task Name" id="taskName" formControlName="taskName" (input)="onChangeValue($event)"></textarea>
+                  </div>
+                
+                <div class="form-field-line-break" [class.toggled-class]="toggleClass.taskDescription">
+                    <label for="taskDescription" class="form-field-label task-description">Task Description</label>
+                    <textarea placeholder="Task description..." id="taskDescription" formControlName="taskDescription" (input)="onChangeValue($event)"></textarea>
+                </div>
+                
+                <div class="form-field-line-break">
+                    <label for="lastComment" class="form-field-label last-comment">Last Comment</label>
+                    <textarea placeholder="No comments." id="lastComment" formControlName="lastComment"></textarea>
+                </div>
+            </div>
+    
+            <div class="task-form-part-one-right">
+                <div class="form-field">
+                    <label id="taskNumber" class="form-field-label">Task Number</label>
+                    <input type="text" placeholder="Task Number" id="taskNumber" formControlName="taskNumber">
+                </div>
+                
+                <div class="form-field" [class.toggled-class]="toggleClass.taskState">
+                    <mat-label class="form-field-label">Task State</mat-label>
+                    <!-- <input type="text" id="taskState" formControlName="taskState"> -->
+                    <select id="taskState" formControlName="taskState" *ngIf="taskStateValue" (change)="toggleFormOptions($event); onChangeValue($event);">
+                        <option *ngFor="let state of taskStateValue.task_states" [value]="state">
+                          {{ state }}
+                        </option>
+                    </select>
+                </div>
+        
+                <div *ngIf="taskForm.get('holdStatus')?.value === true" class="form-field" [class.toggled-class]="toggleClass.holdReason">
+                    <label for="holdReason" class="form-field-label">Hold Reason</label>
+                    <select id="holdReason" formControlName="holdReason" *ngIf="globalStateValue" (change)="onChangeValue($event)">
+                        <option *ngFor="let state of globalStateValue.hold_reasons" [value]="state">
+                          {{ state }}
+                        </option>
+                    </select>
+                </div>
+        
+                <div *ngIf="taskForm.get('cancelStatus')?.value === true" class="form-field" [class.toggled-class]="toggleClass.cancelReason">
+                    <label for="cancelReason" class="form-field-label">Cancel Reason</label>
+                    <select id="cancelReason" formControlName="cancelReason" *ngIf="globalStateValue" (change)="onChangeValue($event)">
+                        <option *ngFor="let state of globalStateValue.cancel_reasons" [value]="state">
+                          {{ state }}
+                        </option>
+                    </select>
+                </div>
+        
+                <div class="form-field" [class.toggled-class]="toggleClass.taskImportance">
+                    <label for="taskImportance" class="form-field-label">Importance</label>
+                    <select id="taskImportance" formControlName="taskImportance" *ngIf="globalStateValue" (change)="onChangeValue($event)">
+                        <option *ngFor="let state of globalStateValue.importance_divisions" [value]="state">
+                          {{ state }}
+                        </option>
+                    </select>
+                </div>
+        
+                <div class="form-field" [class.toggled-class]="toggleClass.referenceTask">
+                    <label for="referenceTask" class="form-field-label">Reference Task</label>
+                    <!-- <input type="text" id="referenceTask" formControlName="referenceTask" (change)="onChangeValue($event)"> -->
+                    <select id="referenceTask" formControlName="referenceTask" *ngIf="taskList" (change)="onChangeValue($event)">
+                        <option [value]="null">None</option>
+                        <option *ngFor="let item of taskList" [value]="item.task_number">
+                            {{ item.task_number }}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="datetime-field form-field" [class.toggled-class]="toggleClass.targetDatetime">
+                    <div class="form-field-label">Target Datetime</div>
+                    <app-datetime
+                        *ngIf="formData.target_datetime"
+                        (valueOnChange)="onChangeValue('targetDatetime', $event)"
+                        [strDatetime]="formData.target_datetime"
+                        [disabled]="false"
+                    ></app-datetime>
+                </div>
+
+                <div class="datetime-field form-field">
+                    <div class="form-field-label">Creation Datetime</div>
+                    <app-datetime
+                        *ngIf="formData.creation_datetime"
+                        (valueOnChange)="onChangeValue('creationDatetime', $event)"
+                        [strDatetime]="formData.creation_datetime"
+                        [disabled]="true"
+                    ></app-datetime>
+                </div>
+
+                <div *ngIf="formData?.task_state=='Completed'" class="datetime-field form-field">
+                    <div class="form-field-label">Completion Datetime</div>
+                    <app-datetime
+                        *ngIf="formData.creation_datetime"
+                        (valueOnChange)="onChangeValue('completionDatetime', $event)"
+                        [strDatetime]="formData.completion_datetime"
+                        [disabled]="true"
+                    ></app-datetime>
+                </div>
+        
+                <div *ngIf="taskForm.get('hasSubTask')?.value === true" class="form-field">
+                    <label for="subTaskCount" class="form-field-label">Sub-Task Count</label>
+                    <input type="text" id="subTaskCount" formControlName="subTaskCount">
+                </div>
+        
+                <div class="form-field">
+                    <label for="workspaceName" class="form-field-label">Workspace</label>
+                    <input type="text" id="workspaceName" formControlName="workspaceName">
+                </div>
+        
+                <div class="form-field" [class.toggled-class]="toggleClass.groupName">
+                    <label for="groupName" class="form-field-label">Group</label>
+                    <!-- <input type="text" id="groupName" formControlName="groupName"> -->
+                    <select id="groupName" formControlName="groupName" *ngIf="groupList" (change)="onChangeValue($event)">
+                        <option *ngFor="let item of groupList.groups" [value]="item.group_id">
+                            {{ item.group_name }}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="form-field" [class.toggled-class]="toggleClass.assignedTo">
+                    <label for="assignedTo" class="form-field-label">Assigned To</label>
+                    <select id="assignedTo" formControlName="assignedTo" *ngIf="teamList" (change)="onChangeValue($event)">
+                        <option *ngFor="let item of teamList" [value]="item.user_id">
+                            {{ item.username }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="task-form-seperator"></div>
+
+        <div class="form-field-line-break" [class.toggled-class]="toggleClass.addComment">
+            <label for="addComment" class="form-field-label add-comment">Add Comment</label>
+            <textarea placeholder="Add comments..." id="addComment" formControlName="addComment" (input)="onChangeValue($event)"></textarea>
+        </div>
+
+    </form>
+</div>

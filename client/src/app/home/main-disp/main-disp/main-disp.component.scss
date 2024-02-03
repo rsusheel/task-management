@@ -1,0 +1,15 @@
+@import '../../../style/structure';
+@import '../../../style/theme';
+
+.main-disp{
+    margin-top: $top-bar-height;
+    margin: auto;
+    // left: $task-bar-width;
+    height: calc(100vh - $top-bar-height);
+    // width: calc(100vw - $task-bar-width);
+    max-width: 1100px;
+    position: fixed;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    z-index: 0;
+}

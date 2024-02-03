@@ -1,0 +1,62 @@
+<ng-container>
+    <ng-container *ngIf="inviteDetails.invites.length!=0; else elseBlock">
+        <div class="manage-invite-dialog">
+            <div class="manage-invite-top">
+                <div class="manage-invite-top-left">
+                    <mat-icon>list_alt</mat-icon>
+                    <div class="manage-invite-title">Open Invites <span class="manage-invite-title-sub">&nbsp; • &nbsp; {{inviteDetails.invites.length}}</span></div>
+                </div>
+                <mat-icon class="manage-invite-close" (click)="onCloseDialog()">close</mat-icon>
+            </div>
+            <div class="manage-invite-table-title">
+                <div class="manage-invite-table-from">From</div>
+                <div>Workspace</div>
+                <div class="manage-invite-table-action">Action</div>
+            </div>
+            <div class="manage-invite-list-container">
+                <ng-container *ngFor="let invite of inviteDetails.invites">
+                    <div class="manage-invite-list" *ngIf="invite.accept_status != true && invite.reject_status != true">
+                        <div class="manage-invite-list-from">
+                            <img class="manage-invite-list-user-icon" src="https://www.pngarts.com/files/10/Default-Profile-Picture-PNG-Image-Background.png"/>
+                            <div class="manage-invite-list-user-detail">
+                                {{invite.requester_details.name}} 
+                                <span class="manage-invite-list-from-email">
+                                    • {{invite.requester_details.username}}
+                                </span> <br/> 
+                                <span class="manage-invite-list-from-email">
+                                    {{invite.requester_details.email_id}}
+                                </span>
+                            </div>
+                        </div>
+                        <div>{{invite.workspace_details.workspace_name}} <br/> <span class="manage-invite-list-from-email">{{'Creator: '+invite.workspace_details.creator_name}}</span></div>
+                        <div class="manage-invite-list-action">
+                            <mat-icon class="manage-invite-btn manage-invite-accept-btn" (click)="onAcceptInvite(invite.invite_id, invite.workspace_details.workspace_id)">check</mat-icon>
+                            <mat-icon class="manage-invite-btn manage-invite-reject-btn" (click)="onRejectInvite()">close</mat-icon>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="manage-invite-seperator"></div>
+            <div class="manage-sent-invite-link">
+                <div></div>
+                <span (click)="openSentInviteDialog()">Manage Sent Invites</span>
+                <span (click)="openInviteHistory()">Invite History</span>
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #elseBlock>
+        <div class="manage-invite-dialog">
+            <div class="manage-invite-empty">
+                <div></div>
+                <mat-icon class="manage-invite-close" (click)="onCloseDialog()">close</mat-icon>
+            </div>
+            <div class="manage-invite-empty-msg">No open invites</div>
+            <div class="manage-invite-seperator"></div>
+            <div class="manage-sent-invite-link">
+                <div></div>
+                <span (click)="openSentInviteDialog()">Manage Sent Invites</span>
+                <span (click)="openInviteHistory()">Invite History</span>
+            </div>
+        </div>
+    </ng-template>
+</ng-container>

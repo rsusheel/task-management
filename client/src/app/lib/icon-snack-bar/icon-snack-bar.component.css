@@ -1,0 +1,29 @@
+.snack-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.snack-bar-content {
+    display: flex;
+    align-items: center;
+}
+
+.snack-bar-message {
+    margin-left: 15px;
+    margin-right: 30px;
+}
+
+.snack-bar-dismissal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.snack-bar-dismissal:hover {
+    color: rgb(184, 184, 184);
+}
+

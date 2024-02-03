@@ -1,0 +1,221 @@
+@import './style/theme';
+@import './style/structure';
+
+::ng-deep * {
+    margin:0;
+    padding:0;
+}
+
+// ::ng-deep .input-datetime-container{
+//     display: flex;
+// }
+
+// ::ng-deep .input-date{
+//     width: 90px;
+//     text-align: center;
+//     border: 1px solid black;
+// }
+
+// ::ng-deep .input-date:focus{
+//     border-radius: 0;
+//     outline: none;
+// }
+
+// ::ng-deep .input-time-container {
+//     display: flex;
+//     align-items: center;
+//     border: 1px solid black;
+//     border-left: 0;
+//     width: 70px;
+// }
+
+// ::ng-deep .input-time {
+//     border: none;
+//     outline: none;
+//     padding: 5px;
+//     width: 50%;
+//     align-items: center;
+//     align-content: center;
+//     text-align: center;
+// }
+
+// ::ng-deep .separator {
+//     margin: 0;
+// }
+
+// ::ng-deep .input-time-meridian {
+//     width: 30px;
+//     text-align: center;
+//     font-size: 13px;
+//     border: 1px solid black;
+//     border-left: 0;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     transition: all 0.2s ease;
+//     padding: 0;
+
+//     &:hover {
+//         width: 60px;
+//     }
+// }
+
+// // ::ng-deep .input-time-meridian:hover {
+// //     width: 60px;
+// // }
+
+// ::ng-deep .input-time-meridian-fix {
+//     width: 30px;
+//     text-align: center;
+//     font-size: 13px;
+//     border: 1px solid black;
+//     border-left: 0;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     padding: 0;
+// }
+
+
+
+// ::ng-deep .input-time-meridian-empty {
+//     position: relative;
+//     display: none;
+//     height: 25px;
+// }
+
+// ::ng-deep .input-time-meridian-hover {
+//     /* color: rgba(0, 0, 0, 0); */
+//     color: aqua;
+// }
+
+// ::ng-deep .input-time-meridian-content {
+//     width: 100%;
+//     width: 30px;
+//     text-align: center;
+// }
+
+// ::ng-deep .input-time-meridian:hover .input-time-meridian-hover{
+//     color: white;
+//     transform: scale(0.8);
+// }
+
+// ::ng-deep .input-time-meridian:hover .input-time-meridian-empty{
+//     width: 30px;
+//     background-color: black;
+//     display: block;
+//     cursor: pointer;
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+::ng-deep .form-field{
+    padding: 3px 0;
+    display: grid;
+    grid-template-columns: 130px 230px;
+    align-items: center;
+    column-gap: 10px;
+    border-left-width: $field-edit-border-width;
+    border-left-style: solid;
+    border-left-color: $transparent-color;
+}
+
+::ng-deep .form-field-label{
+    text-align: right;
+}
+
+::ng-deep .form-field-line-break{
+    display: grid;
+    width: calc(100% - 40px);
+    padding: 5px 20px;
+    grid-template-columns: 1fr;
+    border-left-width: $field-edit-border-width;
+    border-left-style: solid;
+    border-left-color: $transparent-color;
+
+    & .form-field-label{
+        text-align: left;
+        font-size: 14px;
+    }
+}
+
+
+
+
+
+
+
+/* 
+
+main disp top
+
+ */
+
+
+
+
+// 
+// scroll bar styling
+// minimalist
+//  
+
+::ng-deep{
+    *::-webkit-scrollbar {
+        width: 4px;
+      }
+    
+    *::-webkit-scrollbar-track {
+        background: none;
+        border-radius: 10px;
+    }
+    
+    *::-webkit-scrollbar-thumb {
+        background: $scroll-thumb-color;
+        border-radius: 10px;
+      }
+    
+    *::-webkit-scrollbar-thumb:hover {
+        background: $scroll-thumb-color-hover;
+        border-radius: 10px;
+      }
+    
+    * {
+        scrollbar-width: thin;          /* "auto" or "thin" */
+        scrollbar-color: $scroll-thumb-color $transparent-color;   /* scroll thumb and track */ 
+      }
+    
+}
+
+// 
+// textarea padding
+// 
+
+::ng-deep textarea{
+    padding: 5px;
+    resize: none;
+
+    &:focus{
+        outline: none;
+    }
+}

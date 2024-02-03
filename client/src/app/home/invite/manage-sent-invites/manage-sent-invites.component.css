@@ -1,0 +1,134 @@
+.manage-sent-invite-dialog {
+    height: 500px;
+    width: 700px;
+    font-size: 15px;
+    font-weight: 100;
+}
+
+.manage-sent-invite-top {
+    padding: 0px 10px 10px 10px;
+    margin: 15px 20px 20px 20px;
+    border-bottom: 1px solid rgb(171, 171, 171);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: default;
+}
+
+.manage-sent-invite-top-left {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.manage-sent-invite-title-sub {
+    color: rgb(145, 145, 145);
+}
+
+.manage-sent-invite-close {
+    cursor: pointer;
+    color: #989898;
+    display: flex;
+    font-size: 22px;
+    height: 35px;
+    width: 35px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.manage-sent-invite-close:hover {
+    background-color: rgb(230, 230, 230);
+    color: black;
+}
+
+.manage-sent-invite-table-title {
+    display: grid;
+    grid-template-columns: 3fr 2fr 1fr;
+    margin: 30px 50px 10px 50px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(227, 227, 227);
+    font-weight: 500;
+    font-size: 15px;
+    cursor: default;
+}
+
+.manage-sent-invite-table-from {
+    padding-left: 10px;
+}
+
+.manage-sent-invite-table-action {
+    text-align: center;
+}
+
+.manage-sent-invite-list-container {
+    height: 340px;
+    overflow-y: scroll;
+    padding-bottom: 10px;
+}
+
+.manage-sent-invite-list {
+    display: grid;
+    grid-template-columns: 3fr 2fr 1fr;
+    height: 50px;
+    margin: 0px 50px;
+    align-items: center;
+    border-radius: 3px;
+    cursor: default;
+}
+
+.manage-sent-invite-list:hover {
+    background-color: rgb(237, 237, 237);
+}
+
+.manage-sent-invite-list-from {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    align-items: center;
+    justify-content: center;
+}
+
+.manage-sent-invite-list-user-icon {
+    justify-self: center;
+    height: 30px;
+    width: 30px;
+    background-color: #8b8b8b;
+    border-radius: 50%;
+}
+
+.manage-sent-invite-list-from-email {
+    font-size: 12px;
+    color: rgb(104, 104, 104);
+}
+
+.manage-sent-invite-list-action {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.manage-sent-invite-btn {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8b8b8b;
+    font-size: 20px;
+}
+
+.manage-sent-invite-btn:hover {
+    background-color: #dbdbdb;
+    color: black;
+    cursor: pointer;
+}
+
+.manage-sent-invite-seperator {
+    margin: 10px 50px;
+    display: grid;
+    grid-template-columns: 1fr;
+    border-bottom: 1px solid rgb(227, 227, 227);
+}

@@ -1,0 +1,57 @@
+.filter-form-dialog {
+    height: 500px;
+    width: 700px;
+    font-size: 15px;
+    font-weight: 100;
+}
+
+.manage-filter-top {
+    padding: 0px 10px 10px 10px;
+    margin: 15px 20px 20px 20px;
+    border-bottom: 1px solid rgb(171, 171, 171);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: default;
+}
+
+.manage-filter-top-left {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.manage-filter-title-sub {
+    color: rgb(145, 145, 145);
+}
+
+.manage-filter-close {
+    cursor: pointer;
+    color: #989898;
+    display: flex;
+    font-size: 22px;
+    height: 35px;
+    width: 35px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.manage-filter-close:hover {
+    background-color: rgb(230, 230, 230);
+    color: black;
+}
+
+.filter-options{
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    grid-gap: 20px;
+    margin-bottom: 20px;
+}
+
+.select-task-states {
+    display: grid;
+    grid-template-columns: 120px 120px 120px;
+}

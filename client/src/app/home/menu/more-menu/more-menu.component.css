@@ -1,0 +1,37 @@
+.more-menu-backdrop {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.more-menu-panel {
+    border-radius: 0;
+}
+
+.main-container {
+    padding: 10px;
+}
+
+.menu-item {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    height: 30px;
+    align-items: center;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    background-color: rgb(226, 226, 226);
+    border-radius: 5px;
+}
+
+.logout-btn:hover .logout-btn-icon{
+    color: red;
+}
+
+.menu-item-icon {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 10px;
+}

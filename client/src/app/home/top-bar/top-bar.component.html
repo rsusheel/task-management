@@ -1,0 +1,24 @@
+<div class="top-bar">
+    <div class="top-bar-left">
+        <a routerLinkActive="active" routerLink="/home" class="home-link">Home</a>
+        <a routerLinkActive="active" routerLink="/home/tasks" class="home-link">Tasks</a>
+        <a routerLinkActive="active" routerLink="/home/task/create" class="create-task-link">Create Task</a>
+    </div>
+        
+    <div class="top-bar-right">
+        <button *ngIf="this.defaultWorkspace!=this.workspace" (click)="onSetWorkspaceDefault()" class="default-workspace-btn">Set Default</button>
+        <div class="switch-block">
+            <label class="switch-label">Switch workspace</label>
+            <select *ngIf="globalStateValue" [(ngModel)]="selectedWorkspace" (change)="onWorkspaceChange($event)" class="workspace-list">
+                <option *ngFor="let item of globalStateValue" [value]="item.workspace_id">
+                    <ng-container *ngIf="item.creator_id != userId">{{ item.workspace_name }} <span class="creator-username"> • {{ item.creator_username }}</span></ng-container>
+                    <ng-container *ngIf="item.creator_id == userId">{{ item.workspace_name }}</ng-container>
+                </option>
+                <option [value]="'+'">
+                    + Create Workspace
+                </option>
+            </select>
+        </div>
+        <mat-icon (click)="onOpenMenu()" class="menu-btn" matTooltip="Menu">more_vert</mat-icon>
+    </div>
+</div>
